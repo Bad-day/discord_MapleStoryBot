@@ -1,2 +1,2 @@
 # discord_MapleStoryBot
-reference : https://scvtwo.tistory.com/197
+reference : https://yunwoong.tistory.com/214
