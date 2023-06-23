@@ -64,7 +64,19 @@ class MyClient(discord.Client):
         choice_result3 = np.random.choice(emblem_3, emblem_exe_num, p=[0.12375,0.12375,0.12375,0.12375,0.07425,0.07425,0.099,0.07425,0.099,0.07425,0.001143,0.001143,0.001143,0.001143,0.000571,0.000571,0.000571,0.000571,0.00086,0.000571,0.000571,0.000571,0.000571])
         # for i in range(emblem_exe_num):
         return choice_result1,'\n',choice_result2,'\n',choice_result3
-        
+    
+    def green_jade_ha(self):
+        box_count=1
+        seedring_list=["리스트레인트링","컨티뉴어스 링","웨폰퍼프 - S링","웨폰퍼프 - I링","웨폰퍼프 - L링","웨폰퍼프 - D링","얼티메이덤 링","리스크테이커 링","링 오브 썸 링","크리데미지 링","크라이시스 - HM링","버든리프트 링","오버패스 링","레벨퍼프 - S링","레벨퍼프 - I링","레벨퍼프 - L링","레벨퍼프 - D링","헬스컷 링","크리디펜스 링","리밋 링","듀라빌리티 링","리커버디펜스 링","실드스와프 링","마나컷 링","크라이시스 - H링","크라이시스 - M링","크리쉬프트 링","스탠스쉬프트 링","리커버스텐스 링","스위프트 링","리플렉티브 링"]
+        seedring_choice_list_green_jade_ha = np.random.choice(seedring_list, box_count, p=[0.02112678732392759, 0.02112678732392759, 0.028168983098610118, 0.028168983098610118, 0.028168983098610118, 0.028168983098610118, 0.028168983098610118, 0.028168983098610118, 0.028168983098610118, 0.028168983098610118, 0.028168983098610118, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265, 0.03521127887323265])
+        seedring_level_list=["LV1","LV2","LV3"]
+        seedring_level_choice_list_green_jade_ha=np.random.choice(seedring_level_list, box_count, p=[0.5, 0.41, 0.09])
+        result = str(seedring_choice_list_green_jade_ha[0] +" "+ seedring_level_choice_list_green_jade_ha[0] )
+        # select_seedring_result = str(seedring_choice_list_green_jade_ha, seedring_level_choice_list_green_jade_ha)
+        return result
+
+
+    
     def get_answer(self, text):
         trim_text = text.replace(" ", "")
         
@@ -74,9 +86,10 @@ class MyClient(discord.Client):
             '요일': ':calendar: 오늘은 {}입니다'.format(self.get_day_of_week()),
             '시간': ':clock9: 현재 시간은 {}입니다.'.format(self.get_time()),
             '꺼져':':thinking:  ',
-            '키워드':'!안녕 : 인사해줍니다. \n!요일: 오늘의 요일을 알려줍니다\n!시간: 현재 시간을 알려줍니다. \n!꺼져 : 꺼집니다\n!로얄스타일: 로얄스타일 1개 개봉',
+            '키워드':'안녕 : 인사해줍니다. \n요일: 오늘의 요일을 알려줍니다\n시간: 현재 시간을 알려줍니다. \n꺼져 : 꺼집니다\n로얄스타일: 로얄스타일 1개 개봉. \n 큐브: 큐브 1개를 사용한 결과 \n 시드링하급:녹옥의 반지 상자(하급) 1개를 개봉합니다',
             '로얄스타일': '결과 : {}'.format(self.royal_style_simul()),
             '큐브': '결과 : {}'.format(self.cube_simul()),
+            '시드링하급': '결과 : {}'.format(self.green_jade_ha())
         }
         return answer_dict[trim_text]
         # if trim_text == '' or None:
