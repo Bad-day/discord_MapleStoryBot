@@ -1,5 +1,5 @@
 # discord_MapleStoryBot
-reference : https://yunwoong.tistory.com/214
+reference : https://yunwoong.tistory.com/214, https://webolutions.tistory.com/103 , https://kante-kante.tistory.com/40?category=640591,https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=44alice&logNo=223125449279
 
 update 230623 - 녹옥의 반지 상자(하급) 시뮬레이션 기능 추가
 
