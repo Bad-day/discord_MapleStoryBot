@@ -5,7 +5,7 @@ from discord.ext import commands
 from discord_bot_tokken_parameter import Token
 import asyncio
 import urllib.request
-
+from PIL import Image
 # Suppress noise about console usage from errors
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -221,26 +221,53 @@ class MapleStory_Seedring_Simul(commands.Cog):
         return result
     
     @commands.command()
-    async def 시드하(self, ctx):
+    async def 하(self, ctx):
         result = self.green_jade_ha()
-        await ctx.send(embed=discord.Embed(title='녹옥의 보스 반지 상자 (하급) 사용결과', description=f'{result}가 나왔습니다.',color=0x55efc4))
-        # await ctx.send(f'녹옥의 보스 반지 상자 (하급) 사용결과 : {result} 가 나왔습니다. ')
+        urllib.request.urlretrieve(f'https://raw.githubusercontent.com/Bad-day/discord_MapleStoryBot/main/img/%EB%85%B9%EC%98%A5.png', "explain.png")
+        image = Image.open('explain.png')
+        image = image.resize((1000,1000))
+        image.save("green_jade.png")
+        green_jade = discord.File("green_jade.png", filename='green_jade.png')
+        embed=discord.Embed(title='녹옥의 보스 반지 상자 (하급) 사용결과', description=f'{result}가 나왔습니다.',color=0x55efc4)
+        embed.set_thumbnail(url='attachment://green_jade.png')
+        # embed.add_field(name='이름',vlaue='값',inline=True)
+        await ctx.send(embed=embed,file=green_jade)
     @commands.command()
-    async def 테스트(self, ctx):
-        await ctx.send(embed=discord.Embed(title="디스코드 봇", description="명령어 테스트",colour=0x00FFFF))
-    
-    @commands.command()
-    async def 시드중(self, ctx):
+    async def 중(self, ctx):
         result = self.red_jade_ha()
-        await ctx.send(embed=discord.Embed(title='홍옥의 보스 반지 상자 (중급) 사용결과', description=f'{result}가 나왔습니다.',color=0xd63031))
+        urllib.request.urlretrieve(f'https://raw.githubusercontent.com/Bad-day/discord_MapleStoryBot/main/img/%ED%99%8D%EC%98%A5.png', "explain.png")
+        image = Image.open('explain.png')
+        image = image.resize((1000,1000))
+        image.save("red_jade.png")
+        red_jade = discord.File("red_jade.png", filename='red_jade.png')
+        embed=discord.Embed(title='홍옥의 보스 반지 상자 (중급) 사용결과', description=f'{result}가 나왔습니다.',color=0xd63031)
+        embed.set_thumbnail(url='attachment://red_jade.png')
+        # embed.add_field(name='이름',vlaue='값',inline=True)
+        await ctx.send(embed=embed,file=red_jade)
     @commands.command()
-    async def 시드상(self, ctx):
+    async def 상(self, ctx):
         result = self.black_jade_ha()
-        await ctx.send(embed=discord.Embed(title='흑옥의 보스 반지 상자 (상급) 사용결과', description=f'{result}가 나왔습니다.',color=0x636e72))
+        urllib.request.urlretrieve(f'https://raw.githubusercontent.com/Bad-day/discord_MapleStoryBot/main/img/%ED%9D%91%EC%98%A5.png', "explain.png")
+        image = Image.open('explain.png')
+        image = image.resize((1000,1000))
+        image.save("black_jade.png")
+        black_jade = discord.File("black_jade.png", filename='black_jade.png') 
+        embed=discord.Embed(title='흑옥의 보스 반지 상자 (상급) 사용결과', description=f'{result}가 나왔습니다.',color=0x636e72)
+        embed.set_thumbnail(url='attachment://black_jade.png')
+        # embed.add_field(name='이름',vlaue='값',inline=True)
+        await ctx.send(embed=embed,file=black_jade)
     @commands.command()
-    async def 시드최상(self, ctx):
+    async def 최상(self, ctx):
         result = self.white_jade_ha()
-        await ctx.send(embed=discord.Embed(title='백옥의 보스 반지 상자 (최상급)', description=f'{result}가 나왔습니다.',color=0xdfe6e9))
+        urllib.request.urlretrieve(f'https://raw.githubusercontent.com/Bad-day/discord_MapleStoryBot/main/img/%EB%B0%B1%EC%98%A5.png', "explain.png")
+        image = Image.open('explain.png')
+        image = image.resize((1000,1000))
+        image.save("white_jade.png")
+        white_jade = discord.File("white_jade.png", filename='white_jade.png')
+        embed=discord.Embed(title='백옥의 보스 반지 상자 (최상급)', description=f'{result}가 나왔습니다.',color=0xdfe6e9) 
+        embed.set_thumbnail(url='attachment://white_jade.png')
+        # embed.add_field(name='이름',vlaue='값',inline=True)
+        await ctx.send(embed=embed,file=white_jade)
         
     @commands.command()
     async def 시드상자드랍(self, ctx):
@@ -251,25 +278,68 @@ class MapleStory_Seedring_Simul(commands.Cog):
             embed = discord.Embed(title='음악봇 관련', description='!help')
             await ctx.send(embed=embed)
             embed = discord.Embed(title='메이플봇 - 시드시뮬레이션', \
-            description='!시드하 : 녹옥의 보스 반지 상자 (하급)\n1개를 개봉합니다\n\n!시드중: 홍옥의 보스 반지 상자 (중급)\n1개를 개봉합니다.\n\n!시드상: 흑옥의 보스 반지 상자 (상급)\n 1개를 개봉합니다.\n\n!시드최상: 백옥의 보스 반지 상자 (최상급)\n 1개를 개봉합니다.\n\n!시드상자드랍: 난이도별 보스 반지 상자 드랍구간을 알려줍니다.')
+            description='!하 : 녹옥의 보스 반지 상자 (하급)\n1개를 개봉합니다\n\n!중: 홍옥의 보스 반지 상자 (중급)\n1개를 개봉합니다.\n\n!상: 흑옥의 보스 반지 상자 (상급)\n 1개를 개봉합니다.\n\n!최상: 백옥의 보스 반지 상자 (최상급)\n 1개를 개봉합니다.\n\n!시드상자드랍: 난이도별 보스 반지 상자 드랍구간을 알려줍니다.')
             await ctx.send(embed=embed)
             embed = discord.Embed(title='메이플봇 - 농장관련',\
-            description='\n농장 도우미 추가예정, 로얄스타일, 골드애플, 큐브 시뮬추가예정,\n주간보스 드랍템 입력 및 정산기능 추가예정')
+            description=' !필수농장 : 낑선 기준 필수로 뽑아야할 농장 몬스터 리스트를 출력합니다. \n\n!기간: 현재 뽑은 농장몬스터의 옵션 기간을 출력합니다.\n\n!농장킵: 농장몬스터를 뽑으며 필요하여 킵해야할 몬스터들 리스트를 출력합니다.\n\n!농장유지: 농장 몬스터를 뽑기위해 필수로 유지해야할 몬스터 리스트를 출력합니다.\n\n!공마:공격력/마력 을 증가시키는 몬스터 리스트를 출력합니다.\n\n!데미지: 데미지를 증가시키는 몬스터 리스트를 출력합니다.\n\n벞지: 버프지속시간을 증가시키는 몬스터 리스트를 출력합니다.\n\n!보공: 보스공격력을 증가시키는 몬스터 리스트를 출력합니다.\n\n!사냥: 경험치 획득량을 증가시키는 몬스터 리스트를 출력합니다.\n\n!스탯:STR/DEX/INT/LUK/올스탯을 증가시키는 몬스터 리스트를 출력합니다.\n\n크뎀: 크리티컬데미지를 증가시키는 몬스터 리스트를 출력합니다.\n\n기타: 재사용, 파이널어택 데미지 등 기타 사항 몬스터 리스트를 출력합니다.')
             await ctx.send(embed=embed)
-    # await ctx.send(embed=embed)
-    #     await ctx.send(embed=discord.Embed(title='음악봇 관련' description='!help'))
-    #     await ctx.send(embed=discord.Embed(title='메이플봇 관련' description='!시드하 : 녹옥의 보스 반지 상자 (하급)1개를 개봉합니다\n!시드중: 홍옥의 보스 반지 상자 (중급)1개를 개봉합니다. \n !시드상:흑옥의 보스 반지 상자 (상급) 1개를 개봉합니다.\n !시드최상:백옥의 보스 반지 상자 (최상급) 1개를 개봉합니다.\n!시드상자드랍: 난이도별 보스 반지 상자 드랍구간을 알려줍니다.\n농장 도우미 추가예정, 로얄스타일, 골드애플, 큐브 시뮬추가예정,\n주간보스 드랍템 입력 및 정산기능 추가예정'))
-        # await ctx.send(f'음악봇 관련 : !help \n\n메이플봇 관련 : !시드하 : 녹옥의 보스 반지 상자 (하급)1개를 개봉합니다\n!시드중: 홍옥의 보스 반지 상자 (중급)1개를 개봉합니다. \n !시드상:흑옥의 보스 반지 상자 (상급) 1개를 개봉합니다.\n !시드최상:백옥의 보스 반지 상자 (최상급) 1개를 개봉합니다.\n!시드상자드랍: 난이도별 보스 반지 상자 드랍구간을 알려줍니다.\n농장 도우미 추가예정, 로얄스타일, 골드애플, 큐브 시뮬추가예정,\n주간보스 드랍템 입력 및 정산기능 추가예정')
+            embed = discord.Embed(title='기타 추가사항',\
+            description='농장 도우미 추가예정, 로얄스타일, 골드애플, 큐브 시뮬추가예정,\n주간보스 드랍템 입력 및 정산기능 추가예정')
+            await ctx.send(embed=embed)
+class MapleStory_farm(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+    @commands.command()
+    async def 필수농장(self,ctx):
+        embed = discord.Embed(title='낑선 기준 필수농장', description=f'<공/마>\n검그,미르,어둠루미,이퀄루미\n\n<데미지>\n검바,허수아비,쁘띠시그\n\n<크확>\n라즐리,팬텀\n\n<방무>\n라피스,쁘띠매,양철나무꾼\n\n<보공>\n쁘띠랑,반레온\n\n<크뎀>\n쁘띠힐라\n\n<기타>\n쁘띠은월-재사용\n\n<스탯류>\n라니아 올20(루미다있으면),성장한미르 올20,일반몬스터SS(개, 소),베릴',color=0xd63031)
+        await ctx.send(embed=embed)
+    @commands.command()
+    async def 공마(self,ctx):
+        await ctx.send(embed=discord.Embed(title='농장 공격력 / 마력 리스트', description=f'검은마법사의 그림자 -  공격력/마력 +6\n\n무공의분신 - 공격력+3\n\n미르 - 공격력/마력 +5\n\n루미너스(어둠) - 공격력/마력 +5\n\n루미너스(이퀄브리엄) - 20렙당 공격력/마력 + 1',color=0xdfe6e9))
+    @commands.command()
+    async def 스탯(self,ctx):
+        await ctx.send(embed=discord.Embed(title='농장 스탯류 리스트', description=f'*스페셜기준입니다.\n\n\n마스터레드너그 - 힘 +15\n\n마스터렐릭 - 민첩 +15\n\n마스터 마르가나 - 지능+ 15\n\n마스터잭슨 - 올스텟 +5\n\n마스터 히삽 - 럭 + 15\n\n쁘띠 라니아 - 올스텟 + 20(쁘띠루미너스 전체 보유 시)\n\n성장한미르 - 올스텟 +20',color=0xdfe6e9))
+    @commands.command()
+    async def 벞지(self,ctx):
+        await ctx.send(embed=discord.Embed(title='농장 버프지속시간 리스트', description=f'반반  - 버프지속시간 + 5%\n\n 쁘띠 아카이럼 -  버프지속시간 +5%\n\n군단장 윌 - 버프지속시간 +6%',color=0xdfe6e9))
+    
+    @commands.command()
+    async def 보공(self,ctx):
+        await ctx.send(embed=discord.Embed(title='농장 보공  리스트', description=f'쁘띠 랑 - 보공 +8% (쁘띠 은월 보유시)\n\n쁘띠 반레온 - 보공 + 5%',color=0xdfe6e9))
+    @commands.command()
+    async def 기타(self,ctx):
+        await ctx.send(embed=discord.Embed(title='농장 기타(재사용, 파이널어택, 내성 등)  리스트', description=f'피에르 - 파이널어택류 데미지 + 15%\n\n성장중인 미르 - 내성 + 5\n\n쁘띠 은월 -  재사용 대기시간 미적용 확률 + 4%\n\n큰 운영자의 벌룬 재사용 대기시간 미적용 확률 + 2%',color=0xdfe6e9))
+    @commands.command()
+    async def 크뎀(self,ctx):
+        await ctx.send(embed=discord.Embed(title='농장 크뎀  리스트', description=f'쁘띠 힐라 - 크리티컬데미지 +2% ',color=0xdfe6e9))
+    @commands.command()
+    async def 사냥(self,ctx):
+        await ctx.send(embed=discord.Embed(title='농장 사냥(경험치 획득) 리스트', description=f'쁘띠 메르세데스 - 경험치 획득량 + 3%\n\n쁘띠 오르카 - 경험치 획득량 +3%',color=0xdfe6e9))
+    @commands.command()
+    async def 데미지(self,ctx):
+        await ctx.send(embed=discord.Embed(title="농장 데미지 리스트",description='검은 바이킹 -데미지 +2%, 민첩 + 6\n\n허수아비 - 데미지 +4%\n\n쁘띠 시그너스 - 데미지 +3%\n\n핑크빈 - 데미지 +2%', color=0xdfe6e9))
+    @commands.command()
+    async def 농장유지(self,ctx):
+        await ctx.send(embed=discord.Embed(title='농장 보관함포함 유지해야할 목록', description=f'베릴(S) - 강력한 베릴유지용 + 올스텟\n\n파풀라투스의 시계(S) - 루미너스(어둠) 유지용\n\n프랑켄로이드(A+) - 주스텟 스페셜\n\n진지한바이킹(S) or 바이킹군단(S) -검은바이킹 유지용\n\n도둑까마귀(B+) - 허수아비 유지용\n\n푸소 (S) - 쁘띠 매그너스 유지용\n\n월묘도둑 (S) - 쁘띠 팬텀 유지용\n\n쌍둥이 월묘(A+) - 쁘띠 오르카 or 쁘띠랑',color=0xdfe6e9))      
+    @commands.command()
+    async def 농장킵(self,ctx):
+        await ctx.send(embed=discord.Embed(title='농장 하다 킵 할 리스트', description=f'구미호(SS) - 개(힘/행훈) + 쁘띠 랑 유지용\n\n\크레스크레스(SS) - 힘\n\n이프리트(SS) - 라피스 유지용\n\n이상한 몬스터(SS) - 내면의 분노 + 빅터 -> 양철나무꾼 유지용\n\n마스터오멘(SS) - 검은마법사의 그림자 유지용\n\n내면의분노(SS) - 양철나무꾼 유지용\n\n빅터(SS) - 양철나무꾼 유지용\n\n루팡돼지(SS) - 미르세트 유지용\n\n마뇽(SS) - 미르세트 유지용',color=0xdfe6e9))
+    @commands.command()
+    async def 기간(self,ctx):
+        await ctx.send(embed=discord.Embed(title='농장 효과 유지 까지 기간',description=f'2023년 8월 31일 마감 예정 따라서 2023년 8월 30일 농장시작하길 권장합니다.'))
+
+    
 #-------------main--------------#
 @bot.event
 async def on_ready():
-    print(f'Logged in as {bot.user} (ID: {bot.user.id})')
-    print('------')
+    print(f'로그인 중 {bot.user} (ID: {bot.user.id})')
+    print('Success')
 
 async def main():
     async with bot:
         await bot.add_cog(Music(bot))
         await bot.add_cog(MapleStory_Seedring_Simul(bot))
+        await bot.add_cog(MapleStory_farm(bot))
         await bot.start(Token)
 
 asyncio.run(main())
